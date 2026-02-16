@@ -92,6 +92,9 @@ CREATE TABLE recipe_ingredient (
     recipe_id BIGINT NOT NULL,
     ingredient_id BIGINT NOT NULL,
     quantity VARCHAR(100) NOT NULL,
+    is_optional BOOLEAN DEFAULT FALSE,
+    "group" INTEGER NULL DEFAULT NULL,
+
 
     PRIMARY KEY (recipe_id, ingredient_id),
 
@@ -142,6 +145,18 @@ CREATE TABLE meal (
         FOREIGN KEY (recipe_id)
         REFERENCES recipe(id)
         ON DELETE CASCADE
+);
+
+CREATE TABLE recipe_component (
+    parent_recipe_id BIGINT NOT NULL
+        REFERENCES recipe(id) ON DELETE CASCADE,
+
+    child_recipe_id BIGINT NOT NULL
+        REFERENCES recipe(id) ON DELETE CASCADE,
+
+    quantity VARCHAR(100),
+
+    PRIMARY KEY (parent_recipe_id, child_recipe_id)
 );
 
 -- =========================================

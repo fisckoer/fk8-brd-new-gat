@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class ServiceResponse <T>{
 
     private T data;
+    private PaginationDTO pagination;
     //Control de errores mas adelante 
     //private Meta meta;
     //private List<ApiError> errors;

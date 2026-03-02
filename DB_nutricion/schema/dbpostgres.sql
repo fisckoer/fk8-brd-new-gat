@@ -187,3 +187,6 @@ FROM meal m
 JOIN menu_day md ON m.menu_day_id = md.id
 JOIN menu_week mw ON md.menu_week_id = mw.id
 JOIN recipe r ON m.recipe_id = r.id;
+
+ALTER TABLE ingredient
+ADD CONSTRAINT uq_ingredient_name UNIQUE (name);

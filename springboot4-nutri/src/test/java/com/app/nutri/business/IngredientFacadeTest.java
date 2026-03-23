@@ -25,11 +25,11 @@ class IngredientFacadeTest {
     void shouldReturnIngredientsJson() throws Exception {
 
         when(service.getIngredients()).thenReturn(
-                List.of(new IngredientDTO(1L, "Tomate"))
+                List.of(new IngredientDTO(1L, "Tomate","cantidad", true,1))
         );
 
         mockMvc.perform(get("/api/ingredients"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Tomate"));
+                .andExpect(jsonPath("$.data.[0].name").value("Tomate"));
     }
 }

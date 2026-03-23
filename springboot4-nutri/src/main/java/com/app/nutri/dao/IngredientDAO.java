@@ -15,13 +15,15 @@ public class IngredientDAO {
     }
 
     public List<IngredientDTO> findAll() {
+        return null;
+        /* 
         String sql = "SELECT id, name FROM nutri.v_ingredients";
         return jdbcTemplate.query(sql, (rs, rowNum) ->
                 new IngredientDTO(
                         rs.getLong("id"),
                         rs.getString("name")
                 )
-        );
+        );*/
     }
 }
 

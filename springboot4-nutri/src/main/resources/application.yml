@@ -1,6 +1,6 @@
 spring:
   datasource:
     url: jdbc:postgresql://ep-dry-pine-aificamt-pooler.c-4.us-east-1.aws.neon.tech/neondb?currentSchema=nutri&sslmode=require&channelBinding=require
-    username: neondb_owner
-    password: npg_PhM2pGjtlZC5
+    username: nutri_app
+    password: tBA66C1AAq47
     driver-class-name: org.postgresql.Driver

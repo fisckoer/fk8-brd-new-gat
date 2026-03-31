@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,6 +65,20 @@ public class RecipeFacade {
                 .build();
     }
     }
+    /* esta parte es para crear la receta */
+    @PostMapping
+        public ServiceResponse<String> createRecipe(@RequestBody RecipeDTO recipe) {
+
+        boolean created = service.createRecipe(recipe);
+
+            String message = created
+              ? "Receta creada correctamente"
+              : "Error al crear receta";
+
+         return ServiceResponse.<String>builder()
+            .data(message)
+            .build();
+        }
 
 
 

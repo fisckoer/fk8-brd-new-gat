@@ -5,6 +5,7 @@ import com.app.nutri.dto.IngredientDTO;
 import com.app.nutri.dto.RecipeDTO;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 
@@ -51,5 +52,25 @@ public class RecipeService{
 
     return rows > 0;
     }
+/* esta parte del codigo es para crear la receta y unir los inserts generados en el DAO */
+    @Transactional
+    public boolean createRecipe(RecipeDTO recipe) {
+
+     // 1. Insertar receta
+     Long recipeId = dao.insertRecipe(recipe);
+
+       if (recipeId == null) {
+         return false;
+       }
+
+      // 2. Insertar ingredientes
+        if (recipe.getIngredients() != null) {
+        for (IngredientDTO ing : recipe.getIngredients()) {
+            dao.insertIngredient(recipeId, ing);
+        }
+      }
+
+     return true;
+   }
     
 }
